@@ -3,7 +3,7 @@ package main
 import (
    "flag"
    "strings"
-   gp "github.com/89z/googleplay"
+   gp "github.com/najahiiii/googleplay"
 )
 
 func main() {

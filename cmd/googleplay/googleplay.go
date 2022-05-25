@@ -7,7 +7,7 @@ import (
    "net/http"
    "os"
    "time"
-   gp "github.com/89z/googleplay"
+   gp "github.com/najahiiii/googleplay"
 )
 
 func doDetails(head *gp.Header, app string, parse bool) error {

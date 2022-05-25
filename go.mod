@@ -1,8 +1,11 @@
-module github.com/89z/googleplay
+module github.com/najahiiii/googleplay
 
 go 1.18
 
-require github.com/89z/format v1.35.6
+require (
+	github.com/89z/format v1.35.6
+	github.com/89z/googleplay v1.9.6
+)
 
 require (
 	github.com/refraction-networking/utls v1.1.0 // indirect
