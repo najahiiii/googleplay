@@ -20,15 +20,15 @@ com.PirateBayGames.ZombieDefense2
 com.sigmateam.alienshootermobile.free
 */
 func TestDelivery(t *testing.T) {
-	cache, err := os.UserCacheDir()
+	config, err := os.UserConfigDir()
 	if err != nil {
 		t.Fatal(err)
 	}
-	token, err := OpenToken(cache, "googleplay/token.json")
+	token, err := OpenToken(config, "googleplay/token.json")
 	if err != nil {
 		t.Fatal(err)
 	}
-	device, err := OpenDevice(cache, "googleplay/x86.json")
+	device, err := OpenDevice(config, "googleplay/x86.json")
 	if err != nil {
 		t.Fatal(err)
 	}

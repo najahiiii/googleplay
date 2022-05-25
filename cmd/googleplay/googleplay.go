@@ -28,15 +28,15 @@ func doDetails(head *gp.Header, app string, parse bool) error {
 }
 
 func doHeader(platform string, single bool) (*gp.Header, error) {
-	cache, err := os.UserCacheDir()
+	config, err := os.UserConfigDir()
 	if err != nil {
 		return nil, err
 	}
-	token, err := gp.OpenToken(cache, "googleplay/token.json")
+	token, err := gp.OpenToken(config, "googleplay/token.json")
 	if err != nil {
 		return nil, err
 	}
-	device, err := gp.OpenDevice(cache, "googleplay", platform+".json")
+	device, err := gp.OpenDevice(config, "googleplay", platform+".json")
 	if err != nil {
 		return nil, err
 	}
@@ -86,15 +86,15 @@ func doToken(email, password string) error {
 	if err != nil {
 		return err
 	}
-	cache, err := os.UserCacheDir()
+	config, err := os.UserConfigDir()
 	if err != nil {
 		return err
 	}
-	return tok.Create(cache, "googleplay/token.json")
+	return tok.Create(config, "googleplay/token.json")
 }
 
 func doDevice(platform string) error {
-	cache, err := os.UserCacheDir()
+	config, err := os.UserConfigDir()
 	if err != nil {
 		return err
 	}
@@ -104,5 +104,5 @@ func doDevice(platform string) error {
 	}
 	fmt.Printf("Sleeping %v for server to process\n", gp.Sleep)
 	time.Sleep(gp.Sleep)
-	return device.Create(cache, "googleplay", platform+".json")
+	return device.Create(config, "googleplay", platform+".json")
 }

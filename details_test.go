@@ -38,11 +38,11 @@ type appType struct {
 }
 
 func TestDetails(t *testing.T) {
-	cache, err := os.UserCacheDir()
+	config, err := os.UserConfigDir()
 	if err != nil {
 		t.Fatal(err)
 	}
-	token, err := OpenToken(cache, "googleplay/token.json")
+	token, err := OpenToken(config, "googleplay/token.json")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -52,7 +52,7 @@ func TestDetails(t *testing.T) {
 	}
 	for _, app := range apps {
 		platform := Platforms[app.platform]
-		device, err := OpenDevice(cache, "googleplay", platform+".json")
+		device, err := OpenDevice(config, "googleplay", platform+".json")
 		if err != nil {
 			t.Fatal(err)
 		}
