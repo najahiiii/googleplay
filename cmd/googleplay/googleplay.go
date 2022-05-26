@@ -82,7 +82,7 @@ func doDelivery(head *gp.Header, app string, ver uint64) error {
 }
 
 func doToken(email, password string) error {
-	tok, err := gp.NewToken(email, password)
+	token, err := gp.NewToken(email, password)
 	if err != nil {
 		return err
 	}
@@ -90,7 +90,7 @@ func doToken(email, password string) error {
 	if err != nil {
 		return err
 	}
-	return tok.Create(config, "googleplay/token.json")
+	return token.Create(config, "googleplay/token.json")
 }
 
 func doDevice(platform string) error {
