@@ -14,7 +14,7 @@ func main() {
    var app string
    flag.StringVar(&app, "a", "", "app")
    // d
-   dir, err := os.UserHomeDir()
+   dir, err := os.UserConfigDir()
    if err != nil {
       panic(err)
    }
