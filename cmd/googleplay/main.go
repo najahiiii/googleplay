@@ -3,7 +3,7 @@ package main
 import (
    "flag"
    "github.com/89z/format"
-   "github.com/89z/googleplay"
+   "github.com/najahiiii/googleplay"
    "os"
    "path/filepath"
    "strings"
