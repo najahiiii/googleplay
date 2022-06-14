@@ -1,0 +1,29 @@
+name: Go
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build-linux-x86_64:
+    strategy:
+      matrix:
+        os: [linux, windows]
+        arch: [amd64, arm64]
+        include:
+        - os: windows
+          sys: ubuntu
+          ext: .exe
+        - os: linux
+          sys: ubuntu
+    runs-on: ${{ matrix.sys }}-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+    - name: Build-${{ matrix.os }}-${{ matrix.arch }}
+      run: cd cmd/googleplay/ && GOOS=${{ matrix.os }} GOARCH=${{ matrix.arch }} go build -ldflags "-s -w" -o googleplay-${{ matrix.os }}-${{ matrix.arch }}
