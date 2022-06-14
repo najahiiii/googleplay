@@ -36,7 +36,7 @@ func main() {
    // v
    flag.Uint64Var(&f.version, "v", 0, "app version")
    flag.Parse()
-   dir, err := os.UserHomeDir()
+   dir, err := os.UserConfigDir()
    if err != nil {
       panic(err)
    }
