@@ -1,0 +1,34 @@
+name: Go
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  Build:
+    strategy:
+      matrix:
+        os: [linux, windows]
+        arch: [amd64, arm64]
+        include:
+        - os: windows
+          sys: ubuntu
+          ext: .exe
+        - os: linux
+          sys: ubuntu
+    runs-on: ${{ matrix.sys }}-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+    - name: Build-${{ matrix.os }}-${{ matrix.arch }}
+      run: cd cmd/googleplay/ && GOOS=${{ matrix.os }} GOARCH=${{ matrix.arch }} go build -ldflags "-s -w" -o googleplay-${{ matrix.os }}-${{ matrix.arch }}
+    - name: Upload-${{ matrix.os }}-${{ matrix.arch }}
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: googleplay-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.ext }}
+        path: cmd/googleplay/googleplay-${{ matrix.os }}-${{ matrix.arch }}
