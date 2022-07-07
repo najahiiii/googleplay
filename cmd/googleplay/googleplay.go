@@ -5,7 +5,7 @@ import (
    "github.com/89z/rosso/os"
    "io"
    "time"
-   gp "github.com/89z/googleplay"
+   gp "github.com/najahiiii/googleplay"
 )
 
 func (f flags) do_auth(dir string) error {

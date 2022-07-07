@@ -3,7 +3,7 @@ package main
 import (
    "flag"
    "os"
-   gp "github.com/89z/googleplay"
+   gp "github.com/najahiiii/googleplay"
 )
 
 type flags struct {
