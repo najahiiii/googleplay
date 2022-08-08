@@ -29,8 +29,6 @@ func main() {
    flag.Int64Var(&f.platform, "p", 0, gp.Platforms.String())
    // password
    flag.StringVar(&f.password, "password", "", "your password")
-   // purchase
-   flag.BoolVar(&f.purchase, "purchase", false, "purchase app")
    // s
    flag.BoolVar(&f.single, "s", false, "single APK")
    // v
@@ -59,13 +57,12 @@ func main() {
          if err != nil {
             panic(err)
          }
-         if f.purchase {
+         if f.version >= 1 {
             err := head.Purchase(f.app)
             if err != nil {
                panic(err)
             }
-         } else if f.version >= 1 {
-            err := f.do_delivery(head)
+            err = f.do_delivery(head)
             if err != nil {
                panic(err)
             }
